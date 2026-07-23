@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desperdício de Alimentos e Consumo Consciente - Matriz Avançada SENAC</title>
+    <style>
+        /* ==========================================================================
+           1. VARIÁVEIS DE DESIGN E TEMAS (SISTEMA DISCORD EXPANDIDO)
+           ========================================================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        :root {
+            /* Discord Nitro Dark Padrão */
+            --bg-principal: #313338;
+            --bg-card: #2b2d31;
+            --bg-header: #1e1f22;
+            --bg-nav: #111214;
+            --texto-principal: #dbdee1;
+            --texto-secundario: #949ba4;
+            --borda-card: #1e1f22;
+            
+            /* Destaques Modificáveis */
+            --cor-destaque: #949ba4; 
+            --texto-destaque: #1e1f22;
+            
+            /* Tamanho de Fonte (Acessibilidade) */
+            --tamanho-base: 1rem;
+            --tamanho-h2: 1.3rem;
+            --tamanho-titulo: 1.8rem;
+            
+            /* Fonte Atual */
+            --fonte-atual: 'gg sans', 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        /* PALETA DE CADA TEMA DO DISCORD EXPANDIDO */
+        body.tema-discord-dark {
+            --bg-principal: #313338; --bg-card: #2b2d31; --bg-header: #1e1f22; --bg-nav: #111214; --texto-principal: #dbdee1; --texto-secundario: #949ba4; --borda-card: #1e1f22;
+        }
+        body.tema-discord-light {
+            --bg-principal: #f2f3f5; --bg-card: #ffffff; --bg-header: #e3e5e8; --bg-nav: #2b2d31; --texto-principal: #313338; --texto-secundario: #4e5058; --borda-card: #e3e5e8;
+        }
+        body.tema-discord-amoled {
+            --bg-principal: #000000; --bg-card: #0c0c0d; --bg-header: #111111; --bg-nav: #050505; --texto-principal: #f5f7fa; --texto-secundario: #8892b0; --borda-card: #1a1a1a;
+        }
+        body.tema-discord-gray {
+            --bg-principal: #4f545c; --bg-card: #36393f; --bg-header: #2f3136; --bg-nav: #202225; --texto-principal: #dcddde; --texto-secundario: #b9bbbe; --borda-card: #2f3136;
+        }
+        body.tema-discord-blurple {
+            --bg-principal: #404eed; --bg-card: #5865f2; --bg-header: #1e1f22; --bg-nav: #111214; --texto-principal: #ffffff; --texto-secundario: #e3e5e8; --borda-card: #404eed;
+        }
+        body.tema-nord-ice {
+            --bg-principal: #2e3440; --bg-card: #3b4252; --bg-header: #434c5e; --bg-nav: #1c202a; --texto-principal: #eceff4; --texto-secundario: #d8dee9; --borda-card: #434c5e;
+        }
+        body.tema-dracula-vamp {
+            --bg-principal: #282a36; --bg-card: #44475a; --bg-header: #1e1f29; --bg-nav: #191a21; --texto-principal: #f8f8f2; --texto-secundario: #6272a4; --borda-card: #44475a;
+        }
+        body.tema-gruvbox-retro {
+            --bg-principal: #282828; --bg-card: #3c3836; --bg-header: #1d2021; --bg-nav: #1d2021; --texto-principal: #ebdbb2; --texto-secundario: #a89984; --borda-card: #504945;
+        }
+
+        /* FONTES DINÂMICAS */
+        body.font-discord { --fonte-atual: 'gg sans', 'Segoe UI', sans-serif; }
+        body.font-classica { --fonte-atual: 'Georgia', Times, serif; }
+        body.font-tech { --fonte-atual: 'Courier New', monospace; }
+        body.font-escolar { --fonte-atual: 'Comic Sans MS', cursive, sans-serif; }
+
+        /* CORES DE GRIFADO (HIGHLIGHTS) */
+        body.grifado-normal { --cor-destaque: var(--texto-secundario); --texto-destaque: var(--bg-principal); }
+        body.grifado-laranja { --cor-destaque: #f29111; --texto-destaque: #ffffff; }
+        body.grifado-azul { --cor-destaque: #5865f2; --texto-destaque: #ffffff; }
+        body.grifado-verde { --cor-destaque: #23a55a; --texto-destaque: #ffffff; }
+        body.grifado-rosa { --cor-destaque: #eb459e; --texto-destaque: #ffffff; }
+        body.grifado-ciano { --cor-destaque: #00b0f4; --texto-destaque: #000000; }
+        body.grifado-amarelo { --cor-destaque: #f1c40f; --texto-destaque: #000000; }
+        body.grifado-roxo { --cor-destaque: #9b59b6; --texto-destaque: #ffffff; }
+        body.grifado-vermelho { --cor-destaque: #e74c3c; --texto-destaque: #ffffff; }
+        body.grifado-menta { --cor-destaque: #2ecc71; --texto-destaque: #111214; }
+        body.grifado-ouro { --cor-destaque: #d4af37; --texto-destaque: #111214; }
+        body.grifado-orquidea { --cor-destaque: #a55eea; --texto-destaque: #ffffff; }
+
+        /* VARIAÇÕES DE ESTILO DE GRIFADO EXPANDIDO */
+        body.estilo-grifado-padrao mark {
+            background-color: var(--cor-destaque);
+            color: var(--texto-destaque);
+        }
+        body.estilo-grifado-suave mark {
+            background-color: color-mix(in srgb, var(--cor-destaque) 25%, transparent);
+            color: var(--texto-principal);
+            border-bottom: 2px solid var(--cor-destaque);
+            padding: 2px 4px;
+        }
+        body.estilo-grifado-borda mark {
+            background-color: transparent;
+            color: var(--texto-principal);
+            border: 1.5px solid var(--cor-destaque);
+            padding: 1px 4px;
+        }
+        body.estilo-grifado-sublinhado mark {
+            background-color: transparent;
+            color: var(--texto-principal);
+            border-bottom: 2.5px dashed var(--cor-destaque);
+            border-radius: 0;
+            padding: 0 2px;
+        }
+        body.estilo-grifado-fundo-duplo mark {
+            background-color: var(--cor-destaque);
+            color: var(--texto-destaque);
+            box-shadow: 3px 3px 0px var(--borda-card);
+            border: 1px solid var(--borda-card);
+        }
+        body.estilo-grifado-borda-esquerda mark {
+            background-color: color-mix(in srgb, var(--cor-destaque) 15%, transparent);
+            color: var(--texto-principal);
+            border-left: 4px solid var(--cor-destaque);
+            border-radius: 0 4px 4px 0;
+            padding: 2px 6px;
+        }
+        body.estilo-grifado-realista mark {
+            background: linear-gradient(104deg, rgba(255,255,255,0) 0%, color-mix(in srgb, var(--cor-destaque) 80%, transparent) 15%, color-mix(in srgb, var(--cor-destaque) 90%, transparent) 85%, rgba(255,255,255,0) 100%);
+            color: var(--texto-principal);
+            border-radius: 2px;
+            padding: 1px 5px;
+        }
+        body.estilo-grifado-neon mark {
+            background-color: transparent;
+            color: #ffffff;
+            text-shadow: 0 0 8px var(--cor-destaque);
+            border-bottom: 1px solid var(--cor-destaque);
+        }
+
+        /* TAMANHOS DE FONTE CONTROLADOS */
+        body.size-pequeno { --tamanho-base: 0.9rem; --tamanho-h2: 1.15rem; --tamanho-titulo: 1.6rem; }
+        body.size-medio { --tamanho-base: 1rem; --tamanho-h2: 1.3rem; --tamanho-titulo: 1.8rem; }
+        body.size-grande { --tamanho-base: 1.15rem; --tamanho-h2: 1.45rem; --tamanho-titulo: 2.1rem; }
+
+        /* ==========================================================================
+           2. ESTILOS DE COMPONENTES BASE E ANIMAÇÕES
+           ========================================================================== */
+        body {
+            font-family: var(--fonte-atual);
+            font-size: var(--tamanho-base);
+            line-height: 1.6;
+            color: var(--texto-principal);
+            background-color: var(--bg-principal);
+            margin: 0;
+            padding-bottom: 50px;
+        }
+
+        mark {
+            background-color: var(--cor-destaque);
+            color: var(--texto-destaque);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+        }
+
+        header {
+            background-color: var(--bg-header);
+            color: #ffffff;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--cor-destaque);
+        }
+
+        header .logo-img {
+            max-width: 190px;
+            height: auto;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: calc(var(--tamanho-titulo) * 1.3);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: calc(var(--tamanho-base) * 1.1);
+            color: var(--texto-secundario);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background-color: var(--bg-nav);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--borda-card);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        nav ul li button {
+            background: none;
+            border: none;
+            color: #ffffff;
+            padding: 16px 20px;
+            font-weight: 600;
+            font-size: calc(var(--tamanho-base) * 0.9);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-family: var(--fonte-atual);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul li button:hover {
+            background-color: var(--bg-card);
+            color: var(--cor-destaque);
+        }
+
+        nav ul li button.aba-ativa {
+            border-bottom: 3px solid var(--cor-destaque);
+            color: var(--cor-destaque);
+            background-color: var(--bg-card);
+        }
+
+        /* ANIMAÇÃO AVANÇADA NOS EMOJIS DAS ABAS */
+        .emoji-animado {
+            display: inline-block;
+            transform-origin: center bottom;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        nav ul li button:hover .emoji-animado {
+            animation: balanco-emoji 0.6s ease-in-out infinite alternate;
+        }
+
+        nav ul li button.aba-ativa .emoji-animado {
+            animation: pulso-emoji 1.4s ease-in-out infinite;
+        }
+
+        @keyframes balanco-emoji {
+            0% { transform: rotate(-12deg) scale(1.15); }
+            100% { transform: rotate(12deg) scale(1.15); }
+        }
+
+        @keyframes pulso-emoji {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.22) translateY(-3px); }
+        }
+
+        /* Layout Estrutural Grid */
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+        }
+
+        main {
+            flex: 3;
+            min-width: 320px;
+        }
+
+        aside {
+            flex: 1;
+            min-width: 310px;
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--borda-card);
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        aside h3 {
+            margin: 0;
+            border-bottom: 2px solid var(--cor-destaque);
+            padding-bottom: 8px;
+            font-size: calc(var(--tamanho-base) * 1.2);
+        }
+
+        aside p {
+            font-size: calc(var(--tamanho-base) * 0.95);
+            margin: 0;
+            color: var(--texto-secundario);
+            text-align: justify;
+        }
+
+        aside .badge-senac {
+            background-color: var(--cor-destaque);
+            color: var(--texto-destaque);
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .meta-box {
+            background-color: var(--bg-nav);
+            border-radius: 6px;
+            padding: 18px;
+            border: 1px dashed var(--texto-secundario);
+            font-size: calc(var(--tamanho-base) * 0.85);
+        }
+
+        /* Abas e Cartões com Transições Suaves */
+        .secao-aba {
+            display: none;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+        
+        .secao-aba.ativa {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .introducao {
+            background-color: var(--bg-card);
+            padding: 35px;
+            border-radius: 8px;
+            margin-bottom: 35px;
+            border: 1px solid var(--borda-card);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .introducao h2 {
+            margin-bottom: 20px;
+            font-size: var(--tamanho-titulo);
+            border-left: 5px solid var(--cor-destaque);
+            padding-left: 12px;
+        }
+
+        .subtitulo-categoria {
+            font-size: calc(var(--tamanho-base) * 1.3);
+            color: var(--cor-destaque);
+            margin: 45px 0 20px 0;
+            padding-left: 12px;
+            border-left: 4px solid var(--cor-destaque);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .dica-card {
+            background-color: var(--bg-card);
+            padding: 22px 28px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            border: 1px solid var(--borda-card);
+            border-left: 6px solid var(--cor-destaque);
+        }
+
+        .dica-card:hover {
+            transform: translateX(6px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .dica-card h2 {
+            margin-bottom: 10px;
+            font-size: var(--tamanho-h2);
+            display: flex;
+            align-items: center;
+        }
+
+        .dica-card h2 span {
+            background-color: var(--cor-destaque);
+            color: var(--texto-destaque);
+            border-radius: 4px;
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: calc(var(--tamanho-base) * 0.95);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .painel-estatistico {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .bloco-estatistico {
+            background: var(--bg-nav);
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid var(--borda-card);
+        }
+
+        .bloco-estatistico .numero {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--cor-destaque);
+            display: block;
+        }
+
+        .bloco-estatistico .legenda {
+            font-size: 0.85rem;
+            color: var(--texto-secundario);
+        }
+
+        /* Seção do Folder Ajustada */
+        .grid-folder {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            margin-top: 25px;
+        }
+
+        .item-folder {
+            background-color: var(--bg-nav);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--borda-card);
+            text-align: center;
+        }
+
+        .item-folder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .item-folder p {
+            margin-top: 15px;
+            font-size: calc(var(--tamanho-base) * 0.95);
+            font-weight: bold;
+        }
+
+        .info-adicional {
+            margin-top: 18px;
+            padding: 15px;
+            background-color: var(--bg-nav);
+            border-radius: 6px;
+            border-left: 4px solid var(--cor-destaque);
+            font-size: 0.9rem;
+        }
+
+        /* Estilos específicos para aba SENAC */
+        .grid-senac {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .card-senac {
+            background: var(--bg-nav);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--cor-destaque);
+        }
+        
+        .card-senac h4 { margin: 0 0 10px 0; color: #fff; }
+        .card-senac ul { padding-left: 18px; margin: 0; font-size: 0.9rem; }
+
+        /* Estilos para Sanfona/Accordion da Aba Slides + Cartilha */
+        details.modulo-expansivel {
+            background-color: var(--bg-nav);
+            border: 1px solid var(--borda-card);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        details.modulo-expansivel summary {
+            font-weight: bold;
+            font-size: calc(var(--tamanho-base) * 1.1);
+            color: #ffffff;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        details.modulo-expansivel summary:hover {
+            color: var(--cor-destaque);
+        }
+
+        details.modulo-expansivel[open] {
+            border-color: var(--cor-destaque);
+        }
+
+        .conteudo-expansivel {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--borda-card);
+        }
+
+        /* ==========================================================================
+           ESTILOS DO QUIZ INTERATIVO
+           ========================================================================== */
+        .pergunta-card {
+            background-color: var(--bg-nav);
+            border: 1px solid var(--borda-card);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .pergunta-titulo {
+            font-weight: bold;
+            font-size: calc(var(--tamanho-base) * 1.1);
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .alternativas-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .alternativa-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-principal);
+            border: 1px solid var(--borda-card);
+            border-radius: 6px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .alternativa-item:hover {
+            border-color: var(--cor-destaque);
+            background-color: var(--bg-card);
+        }
+
+        .alternativa-item input[type="radio"] {
+            margin-right: 12px;
+            accent-color: var(--cor-destaque);
+            cursor: pointer;
+        }
+
+        .btn-enviar-quiz {
+            background-color: var(--cor-destaque);
+            color: var(--texto-destaque);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .btn-enviar-quiz:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        .resultado-container {
+            background-color: var(--bg-nav);
+            border: 2px solid var(--cor-destaque);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .resultado-titulo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .resultado-pontuacao {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--cor-destaque);
+            margin-bottom: 15px;
+        }
+
+        .resultado-feedback {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--texto-principal);
+        }
+
+        /* ==========================================================================
+           3. BOTÃO DA ENGRENAGEM & PAINEL DE AJUSTES FLUTUANTES EXPANDIDO
+           ========================================================================== */
+        .btn-engrenagem {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--cor-destaque);
+            color: var(--texto-destaque);
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: girar-pulso 4s infinite linear;
+        }
+
+        .btn-engrenagem:hover {
+            transform: scale(1.15);
+            animation-play-state: paused;
+        }
+
+        @keyframes girar-pulso {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .painel-config {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            background-color: var(--bg-header);
+            border: 2px solid var(--borda-card);
+            border-radius: 12px;
+            padding: 22px;
+            width: 340px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+            z-index: 2999;
+            display: none;
+        }
+
+        .painel-config.aberto {
+            display: block;
+            animation: subir-painel 0.25s ease-out forwards;
+        }
+
+        @keyframes subir-painel {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .painel-config h4 {
+            margin: 0 0 15px 0;
+            border-bottom: 1px solid var(--borda-card);
+            padding-bottom: 8px;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .secao-config { margin-bottom: 18px; }
+
+        .secao-config label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--texto-secundario);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .grid-botoes-config {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+
+        .btn-cfg {
+            background-color: var(--bg-principal);
+            color: var(--texto-principal);
+            border: 1px solid var(--borda-card);
+            padding: 7px;
+            font-size: 0.78rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-cfg:hover { border-color: var(--cor-destaque); }
+        .btn-cfg.ativo {
+            background-color: var(--cor-destaque);
+            color: var(--texto-destaque);
+            border-color: var(--cor-destaque);
+        }
+
+        footer {
+            background-color: var(--bg-header);
+            color: var(--texto-secundario);
+            text-align: center;
+            padding: 45px 20px;
+            margin-top: 60px;
+            border-top: 1px solid var(--borda-card);
+        }
+
+        @media (max-width: 950px) {
+            .container { flex-direction: column; }
+            aside { width: 100%; }
+        }
+    </style>
+</head>
+<body class="tema-discord-dark font-discord grifado-normal estilo-grifado-padrao size-medio">
+
+    <button class="btn-engrenagem" onclick="PainelControle.alternar()" title="Ajustes Visuais">⚙️</button>
+
+    <div id="meuPainelConfig" class="painel-config">
+        <h4>🛠️ Menu de Aparência Avançado</h4>
+        
+        <div class="secao-config">
+            <label>Cores de Fundo (Temas)</label>
+            <div class="grid-botoes-config">
+                <button class="btn-cfg ativo" onclick="PainelControle.mudarFundo('discord-dark', this)">Dark Clássico</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFundo('discord-light', this)">Discord Light</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFundo('discord-amoled', this)">Midnight Amoled</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFundo('discord-gray', this)">Cinza Chat</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFundo('discord-blurple', this)">Nitro Blurple</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFundo('nord-ice', this)">Nord Ice</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFundo('dracula-vamp', this)">Dracula Vampire</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFundo('gruvbox-retro', this)">Gruvbox Retro</button>
+            </div>
+        </div>
+
+        <div class="secao-config">
+            <label>Fontes Tipográficas</label>
+            <div class="grid-botoes-config">
+                <button class="btn-cfg ativo" onclick="PainelControle.mudarFonte('discord', this)">gg sans</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFonte('classica', this)">Georgia Serif</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFonte('tech', this)">Code Terminal</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarFonte('escolar', this)">Suas Notas</button>
+            </div>
+        </div>
+
+        <div class="secao-config">
+            <label>Cores do Destaque (Grifado)</label>
+            <div class="grid-botoes-config">
+                <button class="btn-cfg ativo" style="border-left: 4px solid var(--texto-secundario);" onclick="PainelControle.mudarGrifado('normal', this)">Padrão (Normal)</button>
+                <button class="btn-cfg" style="border-left: 4px solid #f29111;" onclick="PainelControle.mudarGrifado('laranja', this)">Laranja SENAC</button>
+                <button class="btn-cfg" style="border-left: 4px solid #5865f2;" onclick="PainelControle.mudarGrifado('azul', this)">Blurple</button>
+                <button class="btn-cfg" style="border-left: 4px solid #23a55a;" onclick="PainelControle.mudarGrifado('verde', this)">Verde</button>
+                <button class="btn-cfg" style="border-left: 4px solid #eb459e;" onclick="PainelControle.mudarGrifado('rosa', this)">Rosa</button>
+                <button class="btn-cfg" style="border-left: 4px solid #00b0f4;" onclick="PainelControle.mudarGrifado('ciano', this)">Ciano</button>
+                <button class="btn-cfg" style="border-left: 4px solid #f1c40f;" onclick="PainelControle.mudarGrifado('amarelo', this)">Amarelo</button>
+                <button class="btn-cfg" style="border-left: 4px solid #9b59b6;" onclick="PainelControle.mudarGrifado('roxo', this)">Roxo</button>
+                <button class="btn-cfg" style="border-left: 4px solid #e74c3c;" onclick="PainelControle.mudarGrifado('vermelho', this)">Vermelho</button>
+                <button class="btn-cfg" style="border-left: 4px solid #2ecc71;" onclick="PainelControle.mudarGrifado('menta', this)">Menta Fresca</button>
+                <button class="btn-cfg" style="border-left: 4px solid #d4af37;" onclick="PainelControle.mudarGrifado('ouro', this)">Ouro Quente</button>
+                <button class="btn-cfg" style="border-left: 4px solid #a55eea;" onclick="PainelControle.mudarGrifado('orquidea', this)">Orquídea</button>
+            </div>
+        </div>
+
+        <div class="secao-config">
+            <label>Estilo do Destaque (Grifado)</label>
+            <div class="grid-botoes-config">
+                <button class="btn-cfg ativo" onclick="PainelControle.mudarEstiloGrifado('padrao', this)">Sólido Clássico</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarEstiloGrifado('suave', this)">Suave Translúcido</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarEstiloGrifado('borda', this)">Apenas Contorno</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarEstiloGrifado('sublinhado', this)">Sublinhado Pontilhado</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarEstiloGrifado('fundo-duplo', this)">Fundo Duplo 3D</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarEstiloGrifado('borda-esquerda', this)">Borda Esquerda</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarEstiloGrifado('realista', this)">Marca Texto Real</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarEstiloGrifado('neon', this)">Sombra Neon</button>
+            </div>
+        </div>
+
+        <div class="secao-config">
+            <label>Escala de Texto</label>
+            <div class="grid-botoes-config">
+                <button class="btn-cfg" onclick="PainelControle.mudarTamanho('pequeno', this)">Compacto</button>
+                <button class="btn-cfg ativo" onclick="PainelControle.mudarTamanho('medio', this)">Normal</button>
+                <button class="btn-cfg" onclick="PainelControle.mudarTamanho('grande', this)">Ampliado</button>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img class="logo-img" src="https://www.pr.senac.br/images/logo_senac.png" alt="Logo Nacional do SENAC">
+        </div>
+        <h1>Desperdício de Alimentos e Consumo Consciente</h1>
+        <p>Matriz Avançada de Engenharia de Suprimentos Domésticos, Psicologia de Compras e Sustentabilidade Integral.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><button onclick="GerenteAbas.alternar('aba-inicio', this)" class="aba-ativa"><span class="emoji-animado">🏠</span> Início/Informações</button></li>
+            <li><button onclick="GerenteAbas.alternar('aba-folder', this)"><span class="emoji-animado">📁</span> Folder do Projeto</button></li>
+            <li><button onclick="GerenteAbas.alternar('aba-senac', this)"><span class="emoji-animado">🏫</span> O SENAC</button></li>
+            <li><button onclick="GerenteAbas.alternar('aba-video', this)"><span class="emoji-animado">🎥</span> Vídeo e Mídia</button></li>
+            <li><button onclick="GerenteAbas.alternar('aba-slides-cartilha', this)"><span class="emoji-animado">📊</span> (slides + cartilha)</button></li>
+            <li><button onclick="GerenteAbas.alternar('aba-quiz', this)"><span class="emoji-animado">📝</span> Quiz Interativo</button></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            
+            <div id="aba-inicio" class="secao-aba ativa">
+                <section class="introducao">
+                    <h2>🧠 Diagnóstico e Impacto do Desperdício Global</h2>
+                    <p>O desperdício de insumos alimentícios não representa apenas uma perda financeira direta no orçamento familiar, mas também uma crise ecológica sistêmica. De acordo com dados da ONU, cerca de <mark>um terço de toda a comida produzida no mundo</mark> é perdida ou descartada. Esta plataforma, alinhada aos valores de responsabilidade socioambientais do <strong>SENAC</strong>, fornece subsídios técnicos e teóricos para reverter esse cenário a partir da microgestão residencial.</p>
+                    
+                    <div class="painel-estatistico">
+                        <div class="bloco-estatistico">
+                            <span class="numero">30%</span>
+                            <span class="legenda">Da produção global de alimentos é descartada</span>
+                        </div>
+                        <div class="bloco-estatistico">
+                            <span class="numero">1.3 Bi</span>
+                            <span class="legenda">De toneladas perdidas anualmente no mundo</span>
+                        </div>
+                        <div class="bloco-estatistico">
+                            <span class="numero">R$ 1.200</span>
+                            <span class="legenda">Prejuízo médio anual estimado por residência</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="subtitulo-categoria">📋 Compêndio Prático de Consumo Consciente</h3>
+
+                    <article class="dica-card">
+                        <h2><span>01</span> Planejamento Estratégico de Compras</h2>
+                        <p>A primeira linha de defesa contra o desperdício é o controle de inventário residencial. Antes de ir ao supermercado, elabore uma <mark>lista técnica baseada no cardápio semanal</mark>. Evite compras impulsivas decorrentes de gatilhos mercadológicos e nunca vá às compras com fome.</p>
+                        <div class="info-adicional">
+                            <strong>Dica de Prateleira:</strong> Priorize comprar itens a granel para ajustar exatamente a quantidade necessária às receitas da semana.
+                        </div>
+                    </article>
+
+                    <article class="dica-card">
+                        <h2><span>02</span> Mapeamento Térmico e Organização Geladeira</h2>
+                        <p>Cada zona do refrigerador possui uma temperatura ideal para conservação de grupos específicos de alimentos:
+                        <ul>
+                            <li><strong>Prateleiras Superiores:</strong> Alimentos prontos, laticínios, sobras e embutidos (área mais fria).</li>
+                            <li><strong>Prateleiras Intermediárias:</strong> Carnes em descongelamento, ovos e doces.</li>
+                            <li><strong>Gaveta Inferior:</strong> Verduras, legumes e frutas sensíveis ao frio extremo.</li>
+                            <li><strong>Porta:</strong> Molhos, temperos e sucos (zona de maior oscilação térmica).</li>
+                        </ul>
+                        </p>
+                    </article>
+
+                    <article class="dica-card">
+                        <h2><span>03</span> Rotação de Estoque (Metodologia PEPS)</h2>
+                        <p>Adote o princípio industrial <strong>PEPS (Primeiro que Entra, Primeiro que Sai)</strong>. Ao retornar do supermercado, posicione os produtos mais antigos à frente nas prateleiras da despensa e da geladeira, e os recém-comprados no fundo.</p>
+                    </article>
+
+                    <article class="dica-card">
+                        <h2><span>04</span> Aproveitamento Integral dos Alimentos (AIA)</h2>
+                        <p>Cascas, talos, sementes e folhas frequentemente contêm <mark>densidade nutricional superior</mark> à polpa.
+                        <ul>
+                            <li><strong>Talos (couve, espinafre, brócolis):</strong> Refogados, recheios de tortas ou caldos nutritivos.</li>
+                            <li><strong>Cascas (maçã, abacaxi, banana):</strong> Chás, geleias, doces e farinhas funcionais.</li>
+                            <li><strong>Sementes (abóbora, melão):</strong> Tostadas ao forno com especiarias viram aperitivos ricos em fibras.</li>
+                        </ul>
+                        </p>
+                    </article>
+
+                    <article class="dica-card">
+                        <h2><span>05</span> Congelamento Térmico e Branqueamento</h2>
+                        <p>O branqueamento é uma técnica gastronômica essencial para conservar vegetais por até 3 meses mantendo cor, textura e nutrientes. Submeta o legume à água fervente por alguns minutos e mergulhe-o imediatamente em água com gelo (choque térmico) antes de congelar.</p>
+                    </article>
+                </section>
+            </div>
+
+            <div id="aba-folder" class="secao-aba">
+                <section class="introducao">
+                    <h2>📁 Material Educativo em Folder do Projeto</h2>
+                    <p>Abaixo você encontra o material visual elaborado pelo projeto socioambiental do SENAC focado na conscientização contra o desperdício.</p>
+                    
+                    <div class="grid-folder">
+                        <div class="item-folder">
+                            <img src="folder1.jpg" alt="Folder do Projeto - Parte 1">
+                            <p>Lado A: Guia Rápido de Economia Familiar e Sustentabilidade</p>
+                        </div>
+                        <div class="item-folder">
+                            <img src="folder2.jpg" alt="Folder do Projeto - Parte 2">
+                            <p>Lado B: Metodologia de Armazenamento e Receitas Zero Desperdício</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="aba-senac" class="secao-aba">
+                <section class="introducao">
+                    <h2>🏫 O SENAC e o Compromisso com o Desenvolvimento Sustentável</h2>
+                    <p>O <strong>Serviço Nacional de Aprendizagem Comercial (SENAC)</strong> é a principal agente brasileira de educação profissional voltada para o setor do comércio de bens, serviços e turismo. Fundado em 1946, o SENAC atua integrando inovação tecnológica, conceitos avançados de ESG (Environmental, Social, and Governance) e inclusão social em seus cursos.</p>
+                    
+                    <div class="grid-senac">
+                        <div class="card-senac">
+                            <h4>🌱 Sustentabilidade na Prática</h4>
+                            <p>A instituição promove ativamente programas de educação ambiental, incentivando práticas de consumo consciente, eficiência energética e gestão responsável de resíduos sólidos em todas as suas unidades estaduais.</p>
+                        </div>
+                        <div class="card-senac">
+                            <h4>👨‍🍳 Gastronomia Zero Desperdício</h4>
+                            <p>Nos cursos da área de Gastronomia e Nutrição, o SENAC capacita profissionais para utilizarem técnicas de aproveitamento integral de insumos, reduzindo custos operacionais e promovendo a segurança alimentar.</p>
+                        </div>
+                        <div class="card-senac">
+                            <h4>💼 Formação Profissional Cidadã</h4>
+                            <p>Com programas de aprendizagem profissional comercial, o SENAC prepara jovens para o mercado de trabalho desenvolvendo visão crítica, autonomia financeira e consciência ética e ambiental.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="aba-video" class="secao-aba">
+                <section class="introducao">
+                    <h2>🎥 Mídia Institucional do Projeto</h2>
+                    <p>Assista ao vídeo explicativo desenvolvido para fixar as técnicas de aproveitamento e gestão de suprimentos nas residências brasileiras.</p>
+                    
+                    <div style="max-width: 100%; margin: 25px auto; text-align: center;">
+                        <video controls style="width: 100%; max-width: 850px; border-radius: 8px; border: 1px solid var(--borda-card); box-shadow: 0 8px 20px rgba(0,0,0,0.5);">
+                            <source src="senac final.mp4" type="video/mp4">
+                            Seu navegador não suporta a exibição de vídeos HTML5.
+                        </video>
+                    </div>
+                </section>
+            </div>
+
+            <div id="aba-slides-cartilha" class="secao-aba">
+                <section class="introducao">
+                    <h2>📊 Materiais Didáticos: Slides e Cartilha Educativa</h2>
+                    <p>Acesse o acervo completo de lâminas de apresentação e o guia educativo. Clique em cada item para expandir e visualizar o conteúdo em detalhes.</p>
+                    
+                    <div style="margin-top: 25px;">
+                        <details class="modulo-expansivel">
+                            <summary>
+                                <span>📽️ Slides da Apresentação do Projeto</span>
+                                <span style="font-size: 0.85rem; opacity: 0.8;">[Clique para expandir / recolher]</span>
+                            </summary>
+                            <div class="conteudo-expansivel">
+                                <p style="margin-bottom: 15px; color: var(--texto-secundario);">Abaixo você pode navegar por todos os slides explicativos do projeto:</p>
+                                <iframe src="slides.pdf" style="width: 100%; height: 600px; border: 1px solid var(--borda-card); border-radius: 6px;" title="Slides da Apresentação">
+                                    <p>Seu navegador não suporta visualização direta de PDF. <a href="slides.pdf" style="color: var(--cor-destaque);" target="_blank">Clique aqui para abrir ou baixar os slides</a>.</p>
+                                </iframe>
+                            </div>
+                        </details>
+
+                        <details class="modulo-expansivel">
+                            <summary>
+                                <span>📖 Cartilha Educativa do Consumo Consciente</span>
+                                <span style="font-size: 0.85rem; opacity: 0.8;">[Clique para expandir / recolher]</span>
+                            </summary>
+                            <div class="conteudo-expansivel">
+                                <p style="margin-bottom: 15px; color: var(--texto-secundario);">Abaixo você encontra a cartilha técnica na íntegra:</p>
+                                <iframe src="cartilha.pdf" style="width: 100%; height: 600px; border: 1px solid var(--borda-card); border-radius: 6px;" title="Cartilha Educativa">
+                                    <p>Seu navegador não suporta visualização direta de PDF. <a href="cartilha.pdf" style="color: var(--cor-destaque);" target="_blank">Clique aqui para abrir ou baixar a cartilha</a>.</p>
+                                </iframe>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+            </div>
+
+            <div id="aba-quiz" class="secao-aba">
+                <section class="introducao">
+                    <h2>📝 Quiz Interativo de Avaliação de Conhecimento</h2>
+                    <p>Teste seus conhecimentos acumulados sobre consumo consciente, refrigeração, aproveitamento de alimentos e o papel institucional do SENAC. Responda às 15 questões abaixo para obter seu feedback teórico completo!</p>
+                    
+                    <form id="form-quiz" onsubmit="event.preventDefault(); calcularResultadoQuiz();">
+                        <div id="container-perguntas-quiz">
+                            </div>
+
+                        <button type="submit" class="btn-enviar-quiz">Finalizar Quiz e Calcular Pontuação 🚀</button>
+                    </form>
+
+                    <div id="resultado-quiz" class="resultado-container">
+                        <div class="resultado-titulo">Resultado da sua Avaliação</div>
+                        <div id="resultado-pontos" class="resultado-pontuacao">0.0 / 15</div>
+                        <div id="resultado-texto" class="resultado-feedback"></div>
+                    </div>
+                </section>
+            </div>
+
+        </main>
+
+        <aside>
+            <div class="badge-senac">Projeto Educacional SENAC</div>
+            <h3>ℹ️ Sobre a Matriz</h3>
+            <p>Esta plataforma digital é uma iniciativa educacional multidisciplinar focada no combate ao desperdício alimentar e no aperfeiçoamento da economia financeira doméstica.</p>
+            
+            <div class="meta-box">
+                <strong>📌 Informações Complementares:</strong><br><br>
+                • <strong>Área:</strong> Gastronomia e Economia Doméstica<br>
+                • <strong>Foco:</strong> Agenda 2030 da ONU (ODS 12)<br>
+                • <strong>Iniciativa:</strong> Jovens Aprendizes SENAC<br>
+                • <strong>Versão:</strong> 11.0 Matriz Avançada
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>© 2026 SENAC - Serviço Nacional de Aprendizagem Comercial. Todos os direitos reservados.</p>
+        <p>Desenvolvido para promoção do Consumo Consciente e Sustentabilidade Social.</p>
+    </footer>
+
+    <script>
+        /* ==========================================================================
+           LÓGICA DE GERENCIAMENTO DE ABAS E CONFIGURAÇÕES VISUAIS
+           ========================================================================== */
+        const GerenteAbas = {
+            alternar: function(idAba, elementoBotao) {
+                document.querySelectorAll('.secao-aba').forEach(aba => {
+                    aba.classList.remove('ativa');
+                });
+                document.querySelectorAll('nav ul li button').forEach(btn => {
+                    btn.classList.remove('aba-ativa');
+                });
+
+                document.getElementById(idAba).classList.add('ativa');
+                elementoBotao.classList.add('aba-ativa');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        const PainelControle = {
+            alternar: function() {
+                const painel = document.getElementById('meuPainelConfig');
+                painel.classList.toggle('aberto');
+            },
+            mudarFundo: function(tema, elementoBotao) {
+                document.body.className = document.body.className.replace(/tema-discord-\w+|tema-\w+-\w+/g, '');
+                document.body.classList.add('tema-' + tema);
+                elementoBotao.parentElement.querySelectorAll('.btn-cfg').forEach(b => b.classList.remove('ativo'));
+                elementoBotao.classList.add('ativo');
+            },
+            mudarFonte: function(fonte, elementoBotao) {
+                document.body.classList.remove('font-discord', 'font-classica', 'font-tech', 'font-escolar');
+                document.body.classList.add('font-' + fonte);
+                elementoBotao.parentElement.querySelectorAll('.btn-cfg').forEach(b => b.classList.remove('ativo'));
+                elementoBotao.classList.add('ativo');
+            },
+            mudarGrifado: function(tipoGrifado, elementoBotao) {
+                document.body.classList.remove('grifado-laranja', 'grifado-azul', 'grifado-verde', 'grifado-rosa', 'grifado-ciano', 'grifado-normal', 'grifado-amarelo', 'grifado-roxo', 'grifado-vermelho', 'grifado-menta', 'grifado-ouro', 'grifado-orquidea');
+                document.body.classList.add('grifado-' + tipoGrifado);
+                elementoBotao.parentElement.querySelectorAll('.btn-cfg').forEach(b => b.classList.remove('ativo'));
+                elementoBotao.classList.add('ativo');
+            },
+            mudarEstiloGrifado: function(estilo, elementoBotao) {
+                document.body.classList.remove('estilo-grifado-padrao', 'estilo-grifado-suave', 'estilo-grifado-borda', 'estilo-grifado-sublinhado', 'estilo-grifado-fundo-duplo', 'estilo-grifado-borda-esquerda', 'estilo-grifado-realista', 'estilo-grifado-neon');
+                document.body.classList.add('estilo-grifado-' + estilo);
+                elementoBotao.parentElement.querySelectorAll('.btn-cfg').forEach(b => b.classList.remove('ativo'));
+                elementoBotao.classList.add('ativo');
+            },
+            mudarTamanho: function(tamanho, elementoBotao) {
+                document.body.classList.remove('size-pequeno', 'size-medio', 'size-grande');
+                document.body.classList.add('size-' + tamanho);
+                elementoBotao.parentElement.querySelectorAll('.btn-cfg').forEach(b => b.classList.remove('ativo'));
+                elementoBotao.classList.add('ativo');
+            }
+        };
+
+        /* ==========================================================================
+           QUIZ INTERATIVO - BASE DE DADOS DE 15 QUESTÕES COM PONTUAÇÃO PARCIAL
+           ========================================================================== */
+        const bancoPerguntasQuiz = [
+            {
+                pergunta: "1. Qual a proporção global estimada de alimentos produzidos que são perdidos ou desperdiçados anualmente segundo a ONU?",
+                alternativas: [
+                    { texto: "Cerca de 10%", peso: 0 },
+                    { texto: "Aproximadamente um terço (30%)", peso: 1 },
+                    { texto: "Mais de 60%", peso: 0 },
+                    { texto: "Aproximadamente a metade (50%)", peso: 0.25 }
+                ]
+            },
+            {
+                pergunta: "2. Na organização térmica da geladeira, qual é o local correto para guardar alimentos já prontos e sobras?",
+                alternativas: [
+                    { texto: "Na gaveta inferior para não pegar cheiro", peso: 0 },
+                    { texto: "Nas prateleiras superiores (zona mais fria)", peso: 1 },
+                    { texto: "Na porta da geladeira para fácil acesso", peso: 0 },
+                    { texto: "Em qualquer prateleira intermediária sem tampa", peso: 0.25 }
+                ]
+            },
+            {
+                pergunta: "3. O que significa a sigla PEPS na gestão de despensa residencial?",
+                alternativas: [
+                    { texto: "Primeiro que Entra, Primeiro que Sai", peso: 1 },
+                    { texto: "Produtos Embalados e Produtos Soltos", peso: 0 },
+                    { texto: "Planejamento Estruturado para Produtos Supermercado", peso: 0.25 },
+                    { texto: "Preservação Especial de Proteínas e Saladas", peso: 0 }
+                ]
+            },
+            {
+                pergunta: "4. Qual é o objetivo da técnica gastronômica conhecida como 'Branqueamento'?",
+                alternativas: [
+                    { texto: "Retirar o agrotóxico utilizando bicarbonato de sódio", peso: 0 },
+                    { texto: "Inativar enzimas cozinhando no vapor ou água fervente e aplicando choque térmico em seguida", peso: 1 },
+                    { texto: "Deixar os vegetais de molho em água sanitária por 30 minutos", peso: 0 },
+                    { texto: "Cozinhar o alimento completamente antes de servir", peso: 0.5 }
+                ]
+            },
+            {
+                pergunta: "5. Quais destas partes de vegetais podem ser totalmente reaproveitadas em receitas nutritivas?",
+                alternativas: [
+                    { texto: "Apenas as folhas verdes escuras", peso: 0.25 },
+                    { texto: "Talos de couve/brócolis, cascas de frutas e sementes", peso: 1 },
+                    { texto: "Apenas sementes de melão", peso: 0 },
+                    { texto: "Nenhuma das anteriores, cascas e talos não possuem valor nutricional", peso: 0 }
+                ]
+            },
+            {
+                pergunta: "6. Qual a principal atitude que previne compras impulsivas no supermercado?",
+                alternativas: [
+                    { texto: "Ir às compras com fome para testar novos produtos", peso: 0 },
+                    { texto: "Comprar apenas produtos em promoção, independentemente da validade", peso: 0 },
+                    { texto: "Elaborar uma lista de compras prévia baseada no planejamento do cardápio semanal", peso: 1 },
+                    { texto: "Comprar sempre embalagens industriais de grande porte", peso: 0.25 }
+                ]
+            },
+            {
+                pergunta: "7. O que representa o conceito de Consumo Consciente?",
+                alternativas: [
+                    { texto: "Comprar apenas produtos caros e orgânicos", peso: 0 },
+                    { texto: "Consumir considerando os impactos ambientais, sociais e econômicos das escolhas", peso: 1 },
+                    { texto: "Deixar de comprar qualquer item industrializado", peso: 0.25 },
+                    { texto: "Comprar alimentos apenas uma vez ao ano", peso: 0 }
+                ]
+            },
+            {
+                pergunta: "8. Em qual ano o SENAC (Serviço Nacional de Aprendizagem Comercial) foi fundado no Brasil?",
+                alternativas: [
+                    { texto: "1988", peso: 0 },
+                    { texto: "1946", peso: 1 },
+                    { texto: "1964", peso: 0.25 },
+                    { texto: "2000", peso: 0 }
+                ]
+            },
+            {
+                pergunta: "9. Por que a porta da geladeira não é o local adequado para armazenar leite e carnes?",
+                alternativas: [
+                    { texto: "Porque a luz interna da geladeira estraga os alimentos na porta", peso: 0 },
+                    { texto: "Devido às constantes variações de temperatura ao abrir e fechar a porta", peso: 1 },
+                    { texto: "Porque a porta é a parte mais fria da geladeira", peso: 0 },
+                    { texto: "Por uma questão apenas estétrica da cozinha", peso: 0 }
+                ]
+            },
+            {
+                pergunta: "10. Qual a função das hortas comunitárias e residenciais no combate ao desperdício?",
+                alternativas: [
+                    { texto: "Substituir completamente a necessidade de supermercados", peso: 0.25 },
+                    { texto: "Aproximar as pessoas da origem dos alimentos e incentivar o colheita sob demanda", peso: 1 },
+                    { texto: "Apenas decorar ambientes urbanos", peso: 0 },
+                    { texto: "Aumentar a venda de fertilizantes químicos", peso: 0 }
+                ]
+            },
+            {
+                pergunta: "11. O que deve ser feito com sementes de abóbora e melão em vez de descartá-las?",
+                alternativas: [
+                    { texto: "Devem ser jogadas no lixo reciclável obrigatoriamente", peso: 0 },
+                    { texto: "Podem ser torradas no forno com temperos e consumidas como aperitivo rico em fibras", peso: 1 },
+                    { texto: "Serem congeladas cruas sem nenhum uso gastronômico", peso: 0 },
+                    { texto: "Fervidas e usadas como sabão caseiro", peso: 0 }
+                ]
+            },
+            {
+                pergunta: "12. Qual ODS (Objetivo de Desenvolvimento Sustentável) da ONU está diretamente ligado ao Consumo e Produção Responsáveis?",
+                alternativas: [
+                    { texto: "ODS 1", peso: 0 },
+                    { texto: "ODS 12", peso: 1 },
+                    { texto: "ODS 5", peso: 0 },
+                    { texto: "ODS 17", peso: 0.25 }
+                ]
+            },
+            {
+                pergunta: "13. O que é a 'Compostagem' no contexto da gestão de resíduos sólidos?",
+                alternativas: [
+                    { texto: "Processo de incineração do lixo orgânico doméstico", peso: 0 },
+                    { texto: "Reciclagem biológica de resíduos orgânicos transformando-os em adubo rico em nutrientes", peso: 1 },
+                    { texto: "Armazenamento de alimentos na geladeira em potes plásticos", peso: 0 },
+                    { texto: "Técnica de empanar vegetais antes do congelamento", peso: 0 }
+                ]
+            },
+            {
+                pergunta: "14. De que forma o SENAC contribui para a sustentabilidade no setor de comércio e serviços?",
+                alternativas: [
+                    { texto: "Apenas através do ensino teórico tradicional sem foco prático", peso: 0 },
+                    { texto: "Capacitando profissionais com foco em inovação, eficiência de recursos e responsabilidade socioambiental", peso: 1 },
+                    { texto: "Financiando grandes indústrias poluidoras", peso: 0 },
+                    { texto: "Vendendo insumos alimentícios no varejo", peso: 0 }
+                ]
+            },
+            {
+                pergunta: "15. Como podemos identificar se uma fruta muito madura ainda é segura para consumo antes de pensar em descartá-la?",
+                alternativas: [
+                    { texto: "Se estiver macia e com casca manchada, mas sem mofo ou odor azedo, pode ser usada em doces, geleias ou vitaminas", peso: 1 },
+                    { texto: "Toda fruta madura demais deve ser descartada imediatamente por segurança", peso: 0 },
+                    { texto: "Apenas se for lavada com água fervente primeiro", peso: 0.25 },
+                    { texto: "Comendo a fruta inteira sem corte prévio para testar o sabor", peso: 0 }
+                ]
+            }
+        ];
+
+        function renderizarQuiz() {
+            const container = document.getElementById("container-perguntas-quiz");
+            container.innerHTML = "";
+
+            bancoPerguntasQuiz.forEach((q, indexPergunta) => {
+                const card = document.createElement("div");
+                card.className = "pergunta-card";
+
+                const titulo = document.createElement("div");
+                titulo.className = "pergunta-titulo";
+                titulo.innerText = q.pergunta;
+                card.appendChild(titulo);
+
+                const listaAlt = document.createElement("div");
+                listaAlt.className = "alternativas-lista";
+
+                q.alternativas.forEach((alt, indexAlt) => {
+                    const label = document.createElement("label");
+                    label.className = "alternativa-item";
+
+                    const input = document.createElement("input");
+                    input.type = "radio";
+                    input.name = `pergunta_${indexPergunta}`;
+                    input.value = alt.peso;
+
+                    label.appendChild(input);
+                    label.appendChild(document.createTextNode(alt.texto));
+                    listaAlt.appendChild(label);
+                });
+
+                card.appendChild(listaAlt);
+                container.appendChild(card);
+            });
+        }
+
+        function calcularResultadoQuiz() {
+            let totalPontos = 0;
+
+            bancoPerguntasQuiz.forEach((q, indexPergunta) => {
+                const radios = document.getElementsByName(`pergunta_${indexPergunta}`);
+                for (let i = 0; i < radios.length; i++) {
+                    if (radios[i].checked) {
+                        totalPontos += parseFloat(radios[i].value);
+                        break;
+                    }
+                }
+            });
+
+            const containerResultado = document.getElementById("resultado-quiz");
+            const pontosTexto = document.getElementById("resultado-pontos");
+            const textoFeedback = document.getElementById("resultado-texto");
+
+            containerResultado.style.display = "block";
+            pontosTexto.innerText = `${totalPontos.toFixed(1)} / 15.0`;
+
+            let feedback = "";
+            if (totalPontos === 15) {
+                feedback = "🔥 Excelente! Você gabaritou o quiz e possui domínio completo sobre consumo consciente, sustentabilidade e a história do SENAC!";
+            } else if (totalPontos >= 10) {
+                feedback = "✨ Muito bom! Você tem um ótimo entendimento do conteúdo, embora algumas respostas tenham sido parciais ou incorretas. Continue revisando!";
+            } else if (totalPontos >= 5) {
+                feedback = "⚡ Desempenho Mediano. Você conhece alguns conceitos, mas muitas das suas respostas demonstraram uma compreensão parcial do material. Dê uma lida no nosso compêndio!";
+            } else {
+                feedback = "📚 Desempenho Baixo. Recomendamos revisar as abas de 'Início/Informações' e 'O SENAC' para solidificar melhor seus conhecimentos teóricos.";
+            }
+
+            textoFeedback.innerText = feedback;
+            containerResultado.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Inicializa o quiz na carga da página
+        document.addEventListener("DOMContentLoaded", renderizarQuiz);
+    </script>
+</body>
+</html>
